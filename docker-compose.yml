@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      DYNAMO_ACCESS_KEY_ID: ${DYNAMO_ACCESS_KEY_ID}
+      DYNAMO_SECRET_ACCESS_KEY: ${DYNAMO_SECRET_ACCESS_KEY}
+      DYNAMO_REGION: ${DYNAMO_REGION}
+
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    ports:
+      - "8000:8000"
+    environment:
+      AWS_ACCESS_KEY_ID: ${DYNAMO_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${DYNAMO_SECRET_ACCESS_KEY}
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb"]
+ 

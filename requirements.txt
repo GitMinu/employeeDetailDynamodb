@@ -1,0 +1,10 @@
+Flask
+Werkzeug
+Flask-Paginate
+#Flask-Bootstrap==3.3.7.1
+Flask-Dynamo
+boto3
+MarkupSafe
+Flask
+
+
